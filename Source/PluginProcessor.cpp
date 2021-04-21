@@ -157,6 +157,7 @@ void PMFProject0AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
         {
             if (shouldPlaySound)
             {
+                // implicit 'this' for r member variable
                 buffer.setSample(channel, i, r.nextFloat());
             }
             else
