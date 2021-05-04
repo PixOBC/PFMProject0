@@ -174,6 +174,8 @@ bool PMFProject0AudioProcessor::hasEditor() const
     return true; // (change this to false if you choose to not supply an editor)
 }
 
+
+// Pointer lecture 28:06 below returns a pointer
 juce::AudioProcessorEditor* PMFProject0AudioProcessor::createEditor()
 {
     return new PMFProject0AudioProcessorEditor (*this);
