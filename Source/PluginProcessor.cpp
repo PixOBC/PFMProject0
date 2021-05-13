@@ -176,8 +176,11 @@ bool PMFProject0AudioProcessor::hasEditor() const
 
 
 // Pointer lecture 28:06 below returns a pointer
+// Ch3 6 this,pointers,references,new conclusion - 
+// See that it's the AudioProcessor who creates the Editor. Whatever is requested from the host, the AudioProcessor is the one who creates it.
 juce::AudioProcessorEditor* PMFProject0AudioProcessor::createEditor()
 {
+    // dereferenced this to the owning AudioProcessor instance
     return new PMFProject0AudioProcessorEditor (*this);
 }
 
