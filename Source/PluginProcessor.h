@@ -17,7 +17,6 @@
 /*
  TODO: 
  Click anywhere on the window to play a note. If you click and drag, it'll change the pitch of the note.
- Should we play a sound?
 */
 class PMFProject0AudioProcessor  : public juce::AudioProcessor
 {
@@ -47,6 +46,7 @@ public:
     bool producesMidi() const override;
     bool isMidiEffect() const override;
     double getTailLengthSeconds() const override;
+    
 
     //==============================================================================
     int getNumPrograms() override;
@@ -58,9 +58,9 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    bool shouldPlaySound = false;
 
 private:
-    bool shouldPlaySound = true;
     juce::Random r;
 
     //==============================================================================

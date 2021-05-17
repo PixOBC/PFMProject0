@@ -11,6 +11,7 @@
 
 //==============================================================================
 PMFProject0AudioProcessorEditor::PMFProject0AudioProcessorEditor (PMFProject0AudioProcessor& p)
+    // a reference to our processor initialises &audioProcessor with a reference to our processor
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
     // Make sure that before the constructor has finished, you've set the
@@ -20,6 +21,8 @@ PMFProject0AudioProcessorEditor::PMFProject0AudioProcessorEditor (PMFProject0Aud
 
 PMFProject0AudioProcessorEditor::~PMFProject0AudioProcessorEditor()
 {
+    // stop sound when we close our GUI or editor
+    audioProcessor.shouldPlaySound = false;
 }
 
 //==============================================================================
@@ -37,4 +40,15 @@ void PMFProject0AudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+}
+
+void PMFProject0AudioProcessorEditor::mouseUp(const juce::MouseEvent& e)
+{
+    // Toggle: if true return the opposite, if false likewise
+    audioProcessor.shouldPlaySound = !audioProcessor.shouldPlaySound;
+}
+
+void PMFProject0AudioProcessorEditor::mouseDown(const juce::MouseEvent& e)
+{
+    /*audioProcessor.shouldPlaySound = true;*/
 }
