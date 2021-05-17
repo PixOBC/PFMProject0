@@ -21,11 +21,9 @@ PMFProject0AudioProcessorEditor::PMFProject0AudioProcessorEditor (PMFProject0Aud
 
 PMFProject0AudioProcessorEditor::~PMFProject0AudioProcessorEditor()
 {
-    // stop sound when we close our GUI or editor
-    //audioProcessor.shouldPlaySound = false;
+    audioProcessor.shouldPlaySound->beginChangeGesture();
     audioProcessor.shouldPlaySound->setValueNotifyingHost(false);
-
-    
+    audioProcessor.shouldPlaySound->endChangeGesture();    
 }
 
 
