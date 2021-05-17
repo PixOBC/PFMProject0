@@ -24,7 +24,10 @@ PMFProject0AudioProcessorEditor::~PMFProject0AudioProcessorEditor()
     // stop sound when we close our GUI or editor
     //audioProcessor.shouldPlaySound = false;
     audioProcessor.shouldPlaySound->setValueNotifyingHost(false);
+
+    
 }
+
 
 //==============================================================================
 void PMFProject0AudioProcessorEditor::paint (juce::Graphics& g)
@@ -45,8 +48,9 @@ void PMFProject0AudioProcessorEditor::resized()
 
 void PMFProject0AudioProcessorEditor::mouseUp(const juce::MouseEvent& e)
 {
- 
+    audioProcessor.shouldPlaySound->beginChangeGesture();
     audioProcessor.shouldPlaySound->setValueNotifyingHost(!audioProcessor.shouldPlaySound->get());
+    audioProcessor.shouldPlaySound->endChangeGesture();
 }
 
 void PMFProject0AudioProcessorEditor::mouseDown(const juce::MouseEvent& e)
