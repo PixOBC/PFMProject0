@@ -45,7 +45,7 @@ void PMFProject0AudioProcessorEditor::resized()
 void PMFProject0AudioProcessorEditor::mouseUp(const juce::MouseEvent& e)
 {
     // Toggle: if true return the opposite, if false likewise
-    audioProcessor.shouldPlaySound = !audioProcessor.shouldPlaySound;
+    //audioProcessor.shouldPlaySound = !audioProcessor.shouldPlaySound;
 }
 
 void PMFProject0AudioProcessorEditor::mouseDown(const juce::MouseEvent& e)

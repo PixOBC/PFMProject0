@@ -25,7 +25,13 @@ PMFProject0AudioProcessor::PMFProject0AudioProcessor()
 
 {   // let the host know that you've changed a parameter so it can be recorded as automation. Also note that you've changed the plugin settings so the DAW can ask you wish to save your changes when you quit. V. IMPORTANT function
     // For this to work, we need to register the parameter with the plugin
-    shouldPlaySound.setValueNotifyingHost();
+    //shouldPlaySound.setValueNotifyingHost();
+    // 1. Declare shouldPlaySound as pointer to AudioParameterBool in class
+    // 2. Implement, allocating memory on the heap using new
+    // 3. Pass in arguments using parameters from the APBool constructor
+    // 4. Use addParameter to add a parameter to the processor. See above. We register with the plugin
+    shouldPlaySound = new juce::AudioParameterBool("ShouldPlaySoundParam", "shouldPlaySound", false);
+    addParameter(shouldPlaySound);
 }
 
 PMFProject0AudioProcessor::~PMFProject0AudioProcessor()
