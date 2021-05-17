@@ -58,7 +58,8 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    bool shouldPlaySound = false;
+    // Audio parameter objects are the objects you see when you go to edit automation in the DAW. What your presets save and load
+    juce::AudioParameterBool* shouldPlaySound = nullptr; // = false;
 
 private:
     juce::Random r;

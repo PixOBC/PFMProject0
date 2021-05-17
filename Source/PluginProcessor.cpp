@@ -21,7 +21,11 @@ PMFProject0AudioProcessor::PMFProject0AudioProcessor()
                      #endif
                        )
 #endif
-{
+                        //shouldPlaySound("ShouldPlaySoundParam", "shouldPlaySound", false)
+
+{   // let the host know that you've changed a parameter so it can be recorded as automation. Also note that you've changed the plugin settings so the DAW can ask you wish to save your changes when you quit. V. IMPORTANT function
+    // For this to work, we need to register the parameter with the plugin
+    shouldPlaySound.setValueNotifyingHost();
 }
 
 PMFProject0AudioProcessor::~PMFProject0AudioProcessor()
@@ -180,7 +184,8 @@ bool PMFProject0AudioProcessor::hasEditor() const
 // See that it's the AudioProcessor who creates the Editor. Whatever is requested from the host, the AudioProcessor is the one who creates it.
 juce::AudioProcessorEditor* PMFProject0AudioProcessor::createEditor()
 {
-    // dereferenced this to the owning AudioProcessor instance
+    // this is pointing to the active instance of the plugin processor. this is dereferenced, giving is the actual instance, which is passed to the plugin editor constructor as a reference
+
     return new PMFProject0AudioProcessorEditor (*this);
 }
 

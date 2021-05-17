@@ -9,11 +9,14 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "PluginProcessor.h"
+//#include "PluginProcessor.h" // using a forward declaration instead
 
 //==============================================================================
 /**
 */
+// forward declaration
+struct PfmProject0AudioProcessor;
+
 class PMFProject0AudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public: 
