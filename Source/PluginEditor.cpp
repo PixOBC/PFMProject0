@@ -21,9 +21,10 @@ PMFProject0AudioProcessorEditor::PMFProject0AudioProcessorEditor (PMFProject0Aud
 
 PMFProject0AudioProcessorEditor::~PMFProject0AudioProcessorEditor()
 {
-    audioProcessor.shouldPlaySound->beginChangeGesture();
+/*    audioProcessor.shouldPlaySound->beginChangeGesture();
     audioProcessor.shouldPlaySound->setValueNotifyingHost(false);
-    audioProcessor.shouldPlaySound->endChangeGesture();    
+    audioProcessor.shouldPlaySound->endChangeGesture();  */  
+    PMFProject0AudioProcessor::UpdateAutomatableParameter(audioProcessor.shouldPlaySound, false);
 }
 
 
@@ -46,9 +47,10 @@ void PMFProject0AudioProcessorEditor::resized()
 
 void PMFProject0AudioProcessorEditor::mouseUp(const juce::MouseEvent& e)
 {
-    audioProcessor.shouldPlaySound->beginChangeGesture();
-    audioProcessor.shouldPlaySound->setValueNotifyingHost(!audioProcessor.shouldPlaySound->get());
-    audioProcessor.shouldPlaySound->endChangeGesture();
+    //audioProcessor.shouldPlaySound->beginChangeGesture();
+    //audioProcessor.shouldPlaySound->setValueNotifyingHost(!audioProcessor.shouldPlaySound->get());
+    //audioProcessor.shouldPlaySound->endChangeGesture();
+    PMFProject0AudioProcessor::UpdateAutomatableParameter(audioProcessor.shouldPlaySound, !audioProcessor.shouldPlaySound->get());
 }
 
 void PMFProject0AudioProcessorEditor::mouseDown(const juce::MouseEvent& e)

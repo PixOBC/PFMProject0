@@ -15,7 +15,7 @@
 /**
 */
 // forward declaration
-struct PfmProject0AudioProcessor;
+struct PMFProject0AudioProcessor;
 
 class PMFProject0AudioProcessorEditor  : public juce::AudioProcessorEditor
 {

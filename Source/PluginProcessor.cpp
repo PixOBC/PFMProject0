@@ -19,9 +19,10 @@ PMFProject0AudioProcessor::PMFProject0AudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
 #endif
-                        //shouldPlaySound("ShouldPlaySoundParam", "shouldPlaySound", false)
+    //take a reference so this is dereferenced
+    apvts(*this, nullptr)
 
 {   // let the host know that you've changed a parameter so it can be recorded as automation. Also note that you've changed the plugin settings so the DAW can ask you wish to save your changes when you quit. V. IMPORTANT function
     // For this to work, we need to register the parameter with the plugin
@@ -32,6 +33,8 @@ PMFProject0AudioProcessor::PMFProject0AudioProcessor()
     // 4. Use addParameter to add a parameter to the processor. See above. We register with the plugin
     shouldPlaySound = new juce::AudioParameterBool("ShouldPlaySoundParam", "shouldPlaySound", false);
     addParameter(shouldPlaySound);
+    // createAndAddParameter returns a rangedAudioParameter but we need a AudioParameterBool
+    apvts.createAndAddParameter();
 }
 
 PMFProject0AudioProcessor::~PMFProject0AudioProcessor()
@@ -208,6 +211,13 @@ void PMFProject0AudioProcessor::setStateInformation (const void* data, int sizeI
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+void PMFProject0AudioProcessor::UpdateAutomatableParameter(juce::RangedAudioParameter* param, float value)
+{
+    param->beginChangeGesture();
+    param->setValueNotifyingHost(value);
+    param->endChangeGesture();
 }
 
 //==============================================================================

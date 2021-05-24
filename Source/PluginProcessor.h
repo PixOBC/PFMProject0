@@ -16,7 +16,10 @@
 
 /*
  TODO: 
- Click anywhere on the window to play a note. If you click and drag, it'll change the pitch of the note.
+ Click anywhere on the window to play a note. 
+ If you click and drag, it'll change the pitch of the note.
+ save plugin state when exiting DAW
+ load plugin state whrn loading a session
 */
 class PMFProject0AudioProcessor  : public juce::AudioProcessor
 {
@@ -60,6 +63,8 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
     // Audio parameter objects are the objects you see when you go to edit automation in the DAW. What your presets save and load
     juce::AudioParameterBool* shouldPlaySound = nullptr; // = false;
+
+    static void UpdateAutomatableParameter(juce::RangedAudioParameter*, float value);
 
 private:
     juce::Random r;
