@@ -12,7 +12,8 @@
 //==============================================================================
 PMFProject0AudioProcessorEditor::PMFProject0AudioProcessorEditor (PMFProject0AudioProcessor& p)
     // a reference to our processor initialises &audioProcessor with a reference to our processor
-    : AudioProcessorEditor (&p), audioProcessor (p)
+    : AudioProcessorEditor (&p),
+      audioProcessor (p),
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.

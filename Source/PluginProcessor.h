@@ -19,7 +19,7 @@
  Click anywhere on the window to play a note. 
  If you click and drag, it'll change the pitch of the note.
  save plugin state when exiting DAW
- load plugin state whrn loading a session
+ load plugin state when loading a session
 */
 class PMFProject0AudioProcessor  : public juce::AudioProcessor
 {
@@ -67,6 +67,7 @@ public:
     static void UpdateAutomatableParameter(juce::RangedAudioParameter*, float value);
 
 private:
+    juce::AudioProcessorValueTreeState apvts;
     juce::Random r;
 
     //==============================================================================
